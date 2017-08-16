@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ASSIGN EQUIPMENT</title>
+  </head>
+  <body>
+    <p>Name : <%= data_user.name%></p>
+    <form class="" action="/user/assign/<%= data_user.id%>" method="post">
+      <select class="" name="EquipmentId">
+        <% data_equip.forEach(du => {%>
+        <option value="<%=du.id%>"><%= du.name_attr%></option>
+        <%})%>
+      </select>
+      <p>Tanggal Pengembalian</p>
+      <input type="date" name="TglPengembalian">
+      <p>Qty</p>
+      <input type="int" name="Qty">
+      <br>
+      <br>
+      <button type="submit" name="button">Submit</button>
+    </form>
+  </body>
+</html>

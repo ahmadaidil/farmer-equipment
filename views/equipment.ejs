@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title><%= title %></title>
+  </head>
+  <body>
+    <a href="/equipment/add">Add Equipment</a><br>
+    <table border="1">
+      <thead>
+        <th>Equipment id</th>
+        <th>Equiment type</th>
+        <th>Equiment brand</th>
+        <th>Users</th>
+        <th colspan="2">Actions</th>
+      </thead>
+      <% equip.forEach(e=>{ %>
+      <tbody>
+        <td><%= e.id %></td>
+        <td><%= e.name_attr %></td>
+        <td><%= e.spec %></td>
+        <td><a href="/equipment/<%=e.id%>/users">View</a></td>
+        <td><a href="/equipment/edit/<%=e.id%>">Edit</a></td>
+        <td><a href="/equipment/delete/<%=e.id%>">Delete</a></td>
+      </tbody>
+      <% }) %>
+    </table>
+  </body>
+</html>

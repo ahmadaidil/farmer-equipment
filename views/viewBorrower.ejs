@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <table border="1">
+      <thead>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+      </thead>
+      <% equip.users.forEach(e=>{%>
+      <tbody>
+        <td><%=e.name%></td>
+        <td><%=e.email%></td>
+        <td><%=e.phone%></td>
+        <td><%=e.address%></td>
+      </tbody>
+      <% }) %>
+    </table>
+  </body>
+</html>

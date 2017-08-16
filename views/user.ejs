@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>USER</title>
+  </head>
+  <body>
+    <a href="/user/add" class="btn btn-default">Add New User</a>
+    <table>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>ID</th>
+          <th>Nama</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Address</th>
+          <th>Assign Equipment</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% data_users.forEach((du, index)=>{%>
+        <tr>
+          <td><%= index+1 %></td>
+          <td><%= du.id %></td>
+          <td><%= du.name %></td>
+          <td><%= du.email %></td>
+          <td><%= du.phone %></td>
+          <td><%= du.address %></td>
+          <td><a href="/user/assign/<%=du.id%>">Assign</a></td>
+          <td>
+            <a href="/user/borrow/<%= du.id %>">View</a>
+            <a href="/user/edit/<%= du.id %>">Edit</a>
+            <a href="/user/delete/<%= du.id %>">Delete</a></td>
+        </tr>
+        <%})%>
+      </tbody>
+    </table>
+  </body>
+</html>
