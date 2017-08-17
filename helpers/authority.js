@@ -10,7 +10,7 @@ function userRole(role) {
       return menuDashboard
       break;
     default:
-    return 'login'
+    return 'dashboard'
   }
 }
 

@@ -3,6 +3,14 @@ var router = express.Router()
 
 var models =  require('../models')
 
+router.use((req,res, next)=>{
+  if(req.session.authority == 'admin'){
+     next();
+  } else {
+    res.send(`Sorry, user can't access this page`);
+  }
+})
+
 router.get('/admin', (req, res)=>{
   models.User.findAll({
     where:{role: "admin"}

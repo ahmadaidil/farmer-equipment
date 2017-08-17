@@ -2,11 +2,10 @@ const express = require('express')
 const router = express.Router()
 
 const models = require('../models')
-const authority = require('../helpers/authority')
 const saltPass = require('../helpers/saltpass')
 
 router.get('/login', (req, res)=>{
-  res.render('login')
+  res.render('login', {msg: ''})
 })
 
 router.post('/login', (req, res, next)=>{
@@ -21,11 +20,14 @@ router.post('/login', (req, res, next)=>{
       req.session.login = true
       req.session.role = user.role
       req.session.salt = user.salt
-      if (authority(req.session.role)) {
-        res.redirect('/dashboard')
+      if (req.session.role == "admin"){
+        req.session.authority = "admin"
       } else{
-        res.redirect('/login')
+        req.session.authority = "user"
       }
+      res.redirect('/dashboard')
+    } else{
+      res.redirect('/', {msg: 'Password salah'})
     }
   })
 })

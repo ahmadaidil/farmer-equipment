@@ -6,7 +6,13 @@ router.get('/', (req, res)=>{
   res.send('CERITANYA INI 404 NOT FOUND! LOL')
 })
 
-//let data = null;
+router.use((req,res, next)=>{
+  if(req.session.authority == 'admin'){
+     next();
+  } else {
+    res.send(`Sorry, user can't access this page`);
+  }
+})
 
 function getTheFuckingData(){
   return new Promise((resolve, reject)=>{
