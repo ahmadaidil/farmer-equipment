@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>NEW LOAN</title>
+  </head>
+  <body>
+    <p>Name : <%= u.name%></p>
+      <form class="" action="/dashboard/newLoan" method="post">
+        <select class="" name="EquipmentId">
+          <% equips.forEach(e=> {%>
+          <option value="<%=e.id%>"><%=e.name_attr%></option>
+          <%})%>
+        </select>
+        <p>Tanggal Peminjaman</p>
+        <input type="date" name="TglPeminjaman" value="<%= new Date()%>" min="<%=new Date()+3%>"><br>
+        <p>Tanggal Pengembalian</p>
+        <input type="date" name="TglPengembalian" value="<%= new Date()%>" min="<%=new Date()+3%>">
+        <p>Qty</p>
+        <input type="int" name="Qty">
+        <br>
+        <br>
+        <button type="submit" name="button">Submit</button>
+      </form>
+  </body>
+</html>

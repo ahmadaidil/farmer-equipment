@@ -22,13 +22,19 @@ router.post('/login', (req, res, next)=>{
       req.session.salt = user.salt
       if (req.session.role == "admin"){
         req.session.authority = "admin"
+        req.session.admin = user
+        return res.redirect('/home')
       } else{
         req.session.authority = "user"
+        req.session.user = user
+        return res.redirect('/dashboard')
       }
-      res.redirect('/dashboard')
     } else{
-      res.redirect('/', {msg: 'Password salah'})
+      res.render('login', {msg: 'wrong password'})
     }
+  })
+  .catch(err=>{
+    res.render('login', {msg: 'username doesnt exist'});
   })
 })
 

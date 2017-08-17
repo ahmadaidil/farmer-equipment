@@ -21,11 +21,12 @@
         </tr>
       </thead>
       <tbody>
+        <%let i=1%>
         <% data_users.forEach((du, index)=>{%>
           <% du.Equipment.forEach(de=>{ %>
-            <% if(!de.UserEquipment.Approved && !de.UserEquipment.Returned && !de.UserEquipment.Removed){ %>
+            <% if(!de.UserEquipment.Approved && !de.UserEquipment.Returned){ %>
               <tr>
-                <td><%= index+1 %></td>
+                <td><%=i++%></td>
                 <td><%= du.name %></td>
                 <td><%= du.email %></td>
                 <td><%= du.phone %></td>
@@ -34,8 +35,8 @@
                 <td><%= de.UserEquipment.Qty %></td>
                 <td><%= de.UserEquipment.TglPeminjaman.toDateString() %></td>
                 <td><%= de.UserEquipment.TglPengembalian.toDateString() %></td>
-                <td><a href="/loan/approving/appr/<%=du.id%>/<%=de.id%>">Approve</a></td>
-                <td><a href="/loan/approving/rej/<%=du.id%>/<%=de.id%>">Reject</a></td>
+                <td><a href="/loan/approval/appr/<%=du.id%>/<%=de.id%>">Approve</a></td>
+                <td><a href="/loan/approval/rej/<%=du.id%>/<%=de.id%>">Reject</a></td>
               </tr>
             <%}%>
         <% }) %>

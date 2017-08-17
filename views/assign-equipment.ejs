@@ -6,14 +6,15 @@
   </head>
   <body>
     <p>Name : <%= data_user.name%></p>
-    <form class="" action="/user/assign/<%= data_user.id%>" method="post">
+    <form class="" action="/account/user/assign/<%= data_user.id%>" method="post">
       <select class="" name="EquipmentId">
         <% data_equip.forEach(du => {%>
         <option value="<%=du.id%>"><%= du.name_attr%></option>
         <%})%>
       </select>
-      <p>Tanggal Pengembalian</p>
+      <p>Tanggal Peminjaman</p>
       <input type="date" name="TglPeminjaman" value="<%= new Date()%>" min="<%=new Date()+3%>"><br>
+      <p>Tanggal Pengembalian</p>
       <input type="date" name="TglPengembalian" value="<%= new Date()%>" min="<%=new Date()+3%>">
       <p>Qty</p>
       <input type="int" name="Qty">

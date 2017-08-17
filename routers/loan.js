@@ -28,7 +28,7 @@ function getTheFuckingData(){
   })
 }
 
-router.get('/approving', (req, res)=>{
+router.get('/approval', (req, res)=>{
   getTheFuckingData()
     .then(users=>{
       res.render('approving', {title:'Loan data that need to be approved', data_users:users})
@@ -38,25 +38,23 @@ router.get('/approving', (req, res)=>{
     })
 })
 
-router.get('/approving/appr/:userid/:equipid', (req, res)=>{
+router.get('/approval/appr/:userid/:equipid', (req, res)=>{
   models.UserEquipment.update({
     Approved: true
   },{
     where:{UserId:req.params.userid, EquipmentId:req.params.equipid}
   }).then(()=>{
-    res.redirect('/loan/approving')
+    res.redirect('/loan/approval')
   }).catch(err=>{
     res.send(err)
   })
 })
 
-router.get('/approving/rej/:userid/:equipid', (req, res)=>{
-  models.UserEquipment.update({
-    Removed: true
-  },{
+router.get('/approval/rej/:userid/:equipid', (req, res)=>{
+  models.UserEquipment.destroy({
     where:{UserId:req.params.userid, EquipmentId:req.params.equipid}
   }).then(()=>{
-    res.redirect('/loan/approving')
+    res.redirect('/loan/approval')
   }).catch(err=>{
     res.send(err)
   })

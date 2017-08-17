@@ -7,8 +7,7 @@ module.exports = function(sequelize, DataTypes) {
     TglPengembalian: DataTypes.DATE,
     Qty: DataTypes.INTEGER,
     Approved: DataTypes.BOOLEAN,
-    Returned: DataTypes.BOOLEAN,
-    Removed: DataTypes.BOOLEAN
+    Returned: DataTypes.BOOLEAN
   });
 
   UserEquipment.associate = models=>{

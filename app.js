@@ -9,10 +9,11 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 var login = require('./routers/login')
 var index = require('./routers/index')
-var dashboard = require('./routers/dashboard')
+var home = require('./routers/home')
 var loan = require('./routers/loan')
 var account = require('./routers/account')
 var equipment = require('./routers/equipment')
+var dashboard = require('./routers/dashboard')
 
 app.use(session({
   secret: '!$#$59&%^*&)(rdj*_&$#!@$_()+!)',
@@ -24,6 +25,7 @@ app.use(session({
 app.use('/', login)
 app.use('/', index)
 app.use('/dashboard', dashboard)
+app.use('/home', home)
 app.use('/loan', loan)
 app.use('/account', account)
 app.use('/equipment', equipment)

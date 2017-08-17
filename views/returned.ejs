@@ -21,11 +21,12 @@
         </tr>
       </thead>
       <tbody>
-        <% data_users.forEach((du, index)=>{%>
+        <%= let i=1 %>
+        <% data_users.forEach(du=>{%>
           <% du.Equipment.forEach(de=>{ %>
-            <% if(de.UserEquipment.Approved && de.UserEquipment.Returned && !de.UserEquipment.Removed){ %>
+            <% if(de.UserEquipment.Approved && de.UserEquipment.Returned){ %>
               <tr>
-                <td><%= index+1 %></td>
+                <td><%= i++ %></td>
                 <td><%= du.name %></td>
                 <td><%= du.email %></td>
                 <td><%= du.phone %></td>
