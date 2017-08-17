@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title><%= title %></title>
+  </head>
+  <body>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Nama</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Address</th>
+          <th>Equipment</th>
+          <th>Qty</th>
+          <th>Start from</th>
+          <th>Return to</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% data_users.forEach((du, index)=>{%>
+          <% du.Equipment.forEach(de=>{ %>
+            <% if(de.UserEquipment.Approved && !de.UserEquipment.Returned && !de.UserEquipment.Removed){ %>
+              <tr>
+                <td><%= index+1 %></td>
+                <td><%= du.name %></td>
+                <td><%= du.email %></td>
+                <td><%= du.phone %></td>
+                <td><%= du.address %></td>
+                <td><%= `${de.name_attr}: ${de.spec}`%></td>
+                <td><%= de.UserEquipment.Qty %></td>
+                <td><%= de.UserEquipment.TglPeminjaman.toDateString() %></td>
+                <td><%= de.UserEquipment.TglPengembalian.toDateString() %></td>
+                <td><a href="/loan/period/return/<%=du.id%>/<%=de.id%>">Return</a></td>
+              </tr>
+            <%}%>
+        <% }) %>
+        <%})%>
+      </tbody>
+    </table>
+  </body>
+</html>

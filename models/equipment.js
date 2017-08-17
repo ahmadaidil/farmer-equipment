@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Equipment.associate = models=>{
-    Equipment.belongsToMany(models.User, {through: models.UserEquipment})
+    Equipment.belongsToMany(models.User, {through: models.UserEquipment, foreignKey: 'EquipmentId'})
   }
 
   return Equipment;

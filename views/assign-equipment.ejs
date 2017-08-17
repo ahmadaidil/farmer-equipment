@@ -13,7 +13,8 @@
         <%})%>
       </select>
       <p>Tanggal Pengembalian</p>
-      <input type="date" name="TglPengembalian">
+      <input type="date" name="TglPeminjaman" value="<%= new Date()%>" min="<%=new Date()+3%>"><br>
+      <input type="date" name="TglPengembalian" value="<%= new Date()%>" min="<%=new Date()+3%>">
       <p>Qty</p>
       <input type="int" name="Qty">
       <br>

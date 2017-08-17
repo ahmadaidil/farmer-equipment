@@ -18,17 +18,16 @@
         </tr>
       </thead>
       <tbody>
-        <% data_users.forEach((du, index)=>{%>
+        <% data_admins.forEach((da, index)=>{%>
         <tr>
           <td><%= index+1 %></td>
-          <td><%= du.name %></td>
-          <td><%= du.email %></td>
-          <td><%= du.phone %></td>
-          <td><%= du.address %></td>
+          <td><%= da.name %></td>
+          <td><%= da.email %></td>
+          <td><%= da.phone %></td>
+          <td><%= da.address %></td>
           <td>
-            <a href="/account/user/assign/<%= du.id %>">Assign</a>
-            <a href="/account/user/edit/<%= du.id %>">Edit</a>
-            <a href="/account/user/delete/<%= du.id %>">Delete</a></td>
+            <a href="/account/admin/edit/<%= da.id %>">Edit</a>
+            <a href="/account/admin/<%= da.id %>">Delete</a></td>
         </tr>
         <%})%>
       </tbody>
