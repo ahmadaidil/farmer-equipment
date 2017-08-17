@@ -1,37 +1,47 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>USER</title>
+    <%- include layout/header%>
   </head>
   <body>
-    <a href="/account/add" class="btn btn-default">Add New User</a>
-    <table border="1">
-      <thead>
-        <tr>
-          <th>No</th>
-          <th>Nama</th>
-          <th>Email</th>
-          <th>Phone</th>
-          <th>Address</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% data_users.forEach((du, index)=>{%>
-        <tr>
-          <td><%= index+1 %></td>
-          <td><%= du.name %></td>
-          <td><%= du.email %></td>
-          <td><%= du.phone %></td>
-          <td><%= du.address %></td>
-          <td>
-            <a href="/account/user/assign/<%= du.id %>">Assign</a>
-            <a href="/account/user/edit/<%= du.id %>">Edit</a>
-            <a href="/account/user/delete/<%= du.id %>">Delete</a></td>
-        </tr>
-        <%})%>
-      </tbody>
-    </table>
+
+    <section>
+      <div class="col-xs-12 col-md-12 menu-header">
+        <%- include layout/menu %>
+      </div>
+
+      <div class="col-xs-12 col-md-12 containt">
+        <h3><%= title %></h3>
+        <a href="/account/add" class="btn btn-default">Add New User</a><br>
+        <br>
+        <table class="table table-width">
+          <thead class="thead-inverse">
+            <tr>
+              <th>No</th>
+              <th>Nama</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Address</th>
+              <th colspan="3">Action</th>
+            </tr>
+          </thead>
+          <% data_users.forEach((du, index)=>{ %>
+          <tbody>
+            <tr>
+              <td><%= index+1 %></td>
+              <td><%= du.name %></td>
+              <td><%= du.email %></td>
+              <td><%= du.phone %></td>
+              <td><%= du.address %></td>
+              <td><a href="/account/user/assign/<%= du.id %>">Assign Rental</a></td>
+              <td><a href="/account/user/edit/<%=du.id%>"><%- include layout/edit%>edit</a></td>
+              <td><a href="/account/user/delete/<%=du.id%>"><%- include layout/delete%></a></td>
+            </tr>
+          </tbody>
+          <% }) %>
+        </table>
+      </div>
+    </section>
+
   </body>
 </html>

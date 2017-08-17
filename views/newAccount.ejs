@@ -1,35 +1,45 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>User</title>
+    <%- include layout/header%>
   </head>
+
   <body>
-    <%if(msg){%>
-      <%= msg %>
-    <%}%>
-    <form class="" action="/account/add" method="post">
-      <p>Nama</p>
-      <input type="text" name="name" />
-      <p>Email</p>
-      <input type="email" name="email" />
-      <p>Phone</p>
-      <input type="telp" name="phone" />
-      <p>Address</p>
-      <input type="text" name="address" />
-      <p>Username</p>
-      <input type="text" name="username" />
-      <p>Password</p>
-      <input type="password" name="password" />
-      <p>Role</p>
-      <select name="role">
-        <option value="admin">Admin</option>
-        <option value="user">Users</option>
-      </select>
-      <br>
-      <br>
-      <button type="submit" name="button">SUBMIT</button>
-    </form>
+    <section>
+      <div class="col-xs-12 col-md-12 menu-header">
+        <%- include layout/menu %>
+      </div>
+
+      <div class="col-xs-12 col-md-12 containt">
+        <h3> <%= title %> </h3>
+        <%if(msg){%>
+          <%= msg %>
+        <%}%>
+        <form class="" action="/account/add" method="post">
+          <p>Nama</p>
+          <input type="text" name="name" />
+          <p>Email</p>
+          <input type="email" name="email" />
+          <p>Phone</p>
+          <input type="telp" name="phone" />
+          <p>Address</p>
+          <input type="text" name="address" />
+          <p>Username</p>
+          <input type="text" name="username" />
+          <p>Password</p>
+          <input type="password" name="password" />
+          <p>Role</p>
+          <select name="role">
+            <option value="admin">Admin</option>
+            <option value="user">Users</option>
+          </select>
+          <br>
+          <br>
+          <button type="submit" name="button">SUBMIT</button>
+        </form>
+      </div>
+
+    </section>
 
   </body>
 </html>

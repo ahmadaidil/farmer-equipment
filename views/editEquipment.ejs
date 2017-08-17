@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title><%=title%></title>
+    <%- include layout/header%>
   </head>
   <body>
-    <form class="" action="/equipment/edit/<%=equip.id%>" method="post">
-      <input type="text" name="name_attr" value="<%=equip.name_attr%>" placeholder="Equipment Type">
-      <input type="text" name="spec" value="<%=equip.spec%>" placeholder="Equipment Brand">
-      <input type="submit" name="" value="Submit">
-    </form>
+    <section class="containt">
+      <h3><%= title%></h3>
+      <a href="/equipment" class="btn btn-warning"> < Go Back </a>
+      <form class="" action="/equipment/edit/<%=equip.id%>" method="post">
+        <p><b>Equipment Name</b></p>
+        <input type="text" name="name_attr" value="<%=equip.name_attr%>">
+        <p><b>Type</b></p>
+        <input type="text" name="spec" value="<%=equip.spec%>">
+        <br>
+        <br>
+        <button type="submit" name="button">Edit Data</button>
+      </form>
+    </section>
   </body>
 </html>

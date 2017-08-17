@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>User</title>
+    <%- include layout/header%>
   </head>
   <body>
-    <h3>Edit User</h3>
-    <form class="" action="/account/user/edit/<%= edit_user.id%>" method="post">
-      <p>Name</p>
-      <input type="text" name="name" value="<%=edit_user.name%>" />
-      <p>Email</p>
-      <input type="email" name="email" value="<%=edit_user.email%>" />
-      <p>Phone</p>
-      <input type="telp" name="phone" value="<%=edit_user.phone%>" />
-      <p>Address</p>
-      <input type="text" name="address" value="<%=edit_user.address%>" />
-      <br>
-      <br>
-      <button type="submit" name="button">SUBMIT</button>
-    </form>
+
+    <section class="containt">
+      <h3><%= title %></h3>
+      <a href="/account/user" class="btn btn-warning"> < Go Back </a>
+      <form class="" action="/account/user/edit/<%= edit_user.id%>" method="post">
+        <p>Name</p>
+        <input type="text" name="name" value="<%=edit_user.name%>" />
+        <p>Email</p>
+        <input type="email" name="email" value="<%=edit_user.email%>" />
+        <p>Phone</p>
+        <input type="telp" name="phone" value="<%=edit_user.phone%>" />
+        <p>Address</p>
+        <input type="text" name="address" value="<%=edit_user.address%>" />
+        <br>
+        <br>
+        <button type="submit" name="button">SUBMIT</button>
+      </form>
+    </section>
 
   </body>
 </html>

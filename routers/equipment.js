@@ -2,18 +2,18 @@ var express = require('express')
 var router = express.Router()
 const models = require('../models')
 
-router.use((req,res, next)=>{
-  if(req.session.authority == 'admin'){
-     next();
-  } else {
-    res.send(`Sorry, user can't access this page`);
-  }
-})
+// router.use((req,res, next)=>{
+//   if(req.session.authority == 'admin'){
+//      next();
+//   } else {
+//     res.send(`Sorry, user can't access this page`);
+//   }
+// })
 
 router.get('/', (req, res)=>{
   models.Equipment.findAll()
     .then(equipments=>{
-      res.render('equipment', {equip:equipments, title:'All Data Equipments'})
+      res.render('equipment', {equip:equipments, title:'All Data Equipments', page: "EQUIPMENT"})
     })
     .catch(err=>{
       res.send(err)
@@ -21,7 +21,7 @@ router.get('/', (req, res)=>{
 })
 
 router.get('/add', (req, res)=>{
-  res.render('addEquipment', {title:'Add Equipment'})
+  res.render('addEquipment', {title:'Add Equipment',page:"ADD EQUIPMENT FORM"})
 })
 
 router.post('/add', (req, res)=>{
@@ -37,7 +37,7 @@ router.post('/add', (req, res)=>{
 router.get('/edit/:id', (req, res)=>{
   models.Equipment.findById(req.params.id)
     .then(equipment=>{
-      res.render('editEquipment', {title: 'Edit Equipment', equip:equipment})
+      res.render('editEquipment', {title: 'Edit Equipment', equip:equipment, page:"EDIT EQUIPMENT FORM"})
     })
     .catch(err=>{
       res.send(err)
@@ -73,7 +73,7 @@ router.get('/:id/users', (req, res) => {
       equip.getUsers()
         .then(users=>{
           equip['users'] = users
-          res.render('viewBorrower', {equip:equip})
+          res.render('viewBorrower', {equip:equip ,  title: 'List Rental by', page:'LIST RENTALER'})
         })
         .catch(err=>{
           res.send(err)

@@ -1,25 +1,37 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title></title>
+    <%- include layout/header %>
   </head>
   <body>
-    <table border="1">
-      <thead>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th>Address</th>
-      </thead>
-      <% equip.users.forEach(e=>{%>
-      <tbody>
-        <td><%=e.name%></td>
-        <td><%=e.email%></td>
-        <td><%=e.phone%></td>
-        <td><%=e.address%></td>
-      </tbody>
-      <% }) %>
-    </table>
+
+    <section class="col-xs-12 col-md-12 containt">
+      <h3><%= title%></h3>
+      <a href="/equipment" class="btn btn-warning"> < Go Back </a>
+
+      <table class="table table-width">
+        <thead class="thead-inverse">
+          <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+          </tr>
+        </thead>
+        <% equip.users.forEach((e, index)=>{%>
+        <tbody>
+          <tr>
+            <td><%= index+1%></td>
+            <td><%=e.name%></td>
+            <td><%=e.email%></td>
+            <td><%=e.phone%></td>
+            <td><%=e.address%></td>
+          </tr>
+        </tbody>
+        <% }) %>
+      </table>
+    </section>
+
   </body>
 </html>

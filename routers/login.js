@@ -5,7 +5,7 @@ const models = require('../models')
 const saltPass = require('../helpers/saltpass')
 
 router.get('/login', (req, res)=>{
-  res.render('login', {msg: ''})
+  res.render('login', {msg: '', page: "LOGIN FORM"})
 })
 
 router.post('/login', (req, res, next)=>{
@@ -22,13 +22,17 @@ router.post('/login', (req, res, next)=>{
       req.session.salt = user.salt
       if (req.session.role == "admin"){
         req.session.authority = "admin"
+        return res.redirect('/home')
       } else{
         req.session.authority = "user"
+        return res.redirect('/dashboard')
       }
-      res.redirect('/dashboard')
     } else{
-      res.redirect('/', {msg: 'Password salah'})
+      res.render('login', {msg: 'Password salah'})
     }
+  })
+  .catch(err=>{
+    res.send(err)
   })
 })
 
@@ -38,7 +42,7 @@ router.get('/logout', (req, res, next)=>{
 })
 
 router.get('/signup', (req, res)=>{
-  res.render('signup')
+  res.render('signup', {page: "SIGNUP FORM"})
 })
 
 router.post('/signup', (req, res)=>{
