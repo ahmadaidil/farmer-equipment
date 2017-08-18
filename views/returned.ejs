@@ -1,46 +1,56 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title><%= title %></title>
+    <%- include layout/header%>
   </head>
   <body>
-    <table border="1">
-      <thead>
-        <tr>
-          <th>No</th>
-          <th>Nama</th>
-          <th>Email</th>
-          <th>Phone</th>
-          <th>Address</th>
-          <th>Equipment</th>
-          <th>Qty</th>
-          <th>Start from</th>
-          <th>Return to</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <%= let i=1 %>
-        <% data_users.forEach(du=>{%>
-          <% du.Equipment.forEach(de=>{ %>
-            <% if(de.UserEquipment.Approved && de.UserEquipment.Returned){ %>
-              <tr>
-                <td><%= i++ %></td>
-                <td><%= du.name %></td>
-                <td><%= du.email %></td>
-                <td><%= du.phone %></td>
-                <td><%= du.address %></td>
-                <td><%= `${de.name_attr}: ${de.spec}`%></td>
-                <td><%= de.UserEquipment.Qty %></td>
-                <td><%= de.UserEquipment.TglPeminjaman.toDateString() %></td>
-                <td><%= de.UserEquipment.TglPengembalian.toDateString() %></td>
-                <td><a href="/loan/returned/rm/<%=du.id%>/<%=de.id%>">Delete</a></td>
-              </tr>
-            <%}%>
-        <% }) %>
-        <%})%>
-      </tbody>
-    </table>
+
+  <section>
+    <div class="col-xs-12 col-md-12 menu-header">
+      <%- include layout/menu %>
+    </div>
+
+    <div class="col-xs-12 col-md-12 containt">
+      <h3><%= title %></h3>
+      <table class="table table-width">
+        <thead class="thead-inverse">
+            <tr>
+              <th>No</th>
+              <th>Nama</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Address</th>
+              <th>Equipment</th>
+              <th>Qty</th>
+              <th>Start from</th>
+              <th>Return to</th>
+              <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% let i=1 %>
+            <% data_users.forEach(du=>{%>
+              <% du.Equipment.forEach(de=>{ %>
+                <% if(de.UserEquipment.Approved && de.UserEquipment.Returned){ %>
+                  <tr>
+                    <td><%= i++ %></td>
+                    <td><%= du.name %></td>
+                    <td><%= du.email %></td>
+                    <td><%= du.phone %></td>
+                    <td><%= du.address %></td>
+                    <td><%= `${de.name_attr}: ${de.spec}`%></td>
+                    <td><%= de.UserEquipment.Qty %></td>
+                    <td><%= de.UserEquipment.TglPeminjaman.toDateString() %></td>
+                    <td><%= de.UserEquipment.TglPengembalian.toDateString() %></td>
+                    <td><a href="/loan/returned/rm/<%=du.id%>/<%=de.id%>"><%- include layout/delete%></a></td>
+                  </tr>
+                <%}%>
+              <% }) %>
+            <%})%>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
   </body>
 </html>

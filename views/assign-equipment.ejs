@@ -1,26 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>ASSIGN EQUIPMENT</title>
+    <%- include layout/header%>
   </head>
   <body>
-    <p>Name : <%= data_user.name%></p>
-    <form class="" action="/account/user/assign/<%= data_user.id%>" method="post">
-      <select class="" name="EquipmentId">
-        <% data_equip.forEach(du => {%>
-        <option value="<%=du.id%>"><%= du.name_attr%></option>
-        <%})%>
-      </select>
-      <p>Tanggal Peminjaman</p>
-      <input type="date" name="TglPeminjaman" value="<%= new Date()%>" min="<%=new Date()+3%>"><br>
-      <p>Tanggal Pengembalian</p>
-      <input type="date" name="TglPengembalian" value="<%= new Date()%>" min="<%=new Date()+3%>">
-      <p>Qty</p>
-      <input type="int" name="Qty">
-      <br>
-      <br>
-      <button type="submit" name="button">Submit</button>
-    </form>
+    <section class="col-xs-12 col-md-12 containt">
+      <h3><%= title %></h3>
+      <a href="/home" class="btn btn-warning">< Go Back</a>
+      <p class="name">Name : <%= data_user.name%></p>
+      <form class="" action="/account/user/assign/<%= data_user.id%>" method="post">
+        <select class="" name="EquipmentId">
+          <% data_equip.forEach(du => {%>
+          <option value="<%=du.id%>"><%= du.name_attr%></option>
+          <%})%>
+        </select>
+        <br><br>
+        <p><b>Tanggal Peminjaman</b></p>
+        <input type="date" name="TglPeminjaman" value="<%= new Date()%>" min="<%=new Date()+3%>">
+        <br><br>
+        <p><b>Tanggal Pengembalian</b></p>
+        <input type="date" name="TglPengembalian" value="<%= new Date()%>" min="<%=new Date()+3%>">
+        <br><br>
+        <p><b>Qty</b></p>
+        <input type="int" name="Qty">
+        <br>
+        <br>
+        <button type="submit" name="button">Submit</button>
+      </form>
+    </section>
   </body>
 </html>

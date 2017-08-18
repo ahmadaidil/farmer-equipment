@@ -108,7 +108,7 @@ router.get('/user/assign/:id',(req, res)=>{
   .then((user)=>{
     models.Equipment.findAll()
     .then((equip)=>{
-      res.render('assign-equipment', {data_user : user, data_equip: equip})
+      res.render('assign-equipment', {data_user : user, data_equip: equip, page:'ASSIGN EQUIPMENT FORM', title:'Assign Approval List'})
     })
   })
   .catch(err=>{

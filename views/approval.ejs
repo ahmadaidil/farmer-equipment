@@ -1,47 +1,57 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title><%= title %></title>
+    <%- include layout/header%>
   </head>
   <body>
-    <table border="1">
-      <thead>
-        <tr>
-          <th>No</th>
-          <th>Nama</th>
-          <th>Email</th>
-          <th>Phone</th>
-          <th>Address</th>
-          <th>Equipment</th>
-          <th>Qty</th>
-          <th>Start from</th>
-          <th>Return to</th>
-          <th colspan="2">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <%let i=1%>
-        <% data_users.forEach((du, index)=>{%>
-          <% du.Equipment.forEach(de=>{ %>
-            <% if(!de.UserEquipment.Approved && !de.UserEquipment.Returned){ %>
-              <tr>
-                <td><%=i++%></td>
-                <td><%= du.name %></td>
-                <td><%= du.email %></td>
-                <td><%= du.phone %></td>
-                <td><%= du.address %></td>
-                <td><%= `${de.name_attr}: ${de.spec}`%></td>
-                <td><%= de.UserEquipment.Qty %></td>
-                <td><%= de.UserEquipment.TglPeminjaman.toDateString() %></td>
-                <td><%= de.UserEquipment.TglPengembalian.toDateString() %></td>
-                <td><a href="/loan/approval/appr/<%=du.id%>/<%=de.id%>">Approve</a></td>
-                <td><a href="/loan/approval/rej/<%=du.id%>/<%=de.id%>">Reject</a></td>
-              </tr>
-            <%}%>
-        <% }) %>
-        <%})%>
-      </tbody>
-    </table>
+
+    <section>
+      <div class="col-xs-12 col-md-12 menu-header">
+        <%- include layout/menu %>
+      </div>
+
+      <div class="col-xs-12 col-md-12 containt">
+        <h3><%= title %></h3>
+        <table class="table table-width">
+          <thead class="thead-inverse">
+            <tr>
+              <th>No</th>
+              <th>Nama</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Address</th>
+              <th>Equipment</th>
+              <th>Qty</th>
+              <th>Start from</th>
+              <th>Return to</th>
+              <th colspan="2">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%let i=1%>
+            <% data_users.forEach((du, index)=>{%>
+              <% du.Equipment.forEach(de=>{ %>
+                <% if(!de.UserEquipment.Approved && !de.UserEquipment.Returned){ %>
+                  <tr>
+                    <td><%=i++%></td>
+                    <td><%= du.name %></td>
+                    <td><%= du.email %></td>
+                    <td><%= du.phone %></td>
+                    <td><%= du.address %></td>
+                    <td><%= `${de.name_attr}: ${de.spec}`%></td>
+                    <td><%= de.UserEquipment.Qty %></td>
+                    <td><%= de.UserEquipment.TglPeminjaman.toDateString() %></td>
+                    <td><%= de.UserEquipment.TglPengembalian.toDateString() %></td>
+                    <td><a href="/loan/approval/appr/<%=du.id%>/<%=de.id%>"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Approve</a></td>
+                    <td><a href="/loan/approval/rej/<%=du.id%>/<%=de.id%>"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Reject</a></td>
+                  </tr>
+                <%}%>
+            <% }) %>
+            <%})%>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
   </body>
 </html>

@@ -43,7 +43,7 @@ router.get('/newLoan', (req, res)=>{
     .then(user=>{
       models.Equipment.findAll()
         .then(equips=>{
-          res.render('newLoan', {u:user, equips:equips})
+          res.render('newLoan', {u:user, equips:equips, page:'NEW LOAN FORM', title:'ADD NEW RENTAL'})
         })
     })
     .catch(err=>{

@@ -3,7 +3,8 @@ var router = express.Router()
 var models =  require('../models')
 
 router.get('/', (req, res)=>{
-  res.send('CERITANYA INI 404 NOT FOUND! LOL')
+  res.redirect('/home')
+  //res.send('CERITANYA INI 404 NOT FOUND! LOL')
 })
 
 router.use((req,res, next)=>{
@@ -31,7 +32,7 @@ function getTheFuckingData(){
 router.get('/approval', (req, res)=>{
   getTheFuckingData()
     .then(users=>{
-      res.render('approval', {title:'Loan data that need to be approved', data_users:users})
+      res.render('approval', {title:'Loan data that need to be approved', data_users:users, page:'NEW RENTAL'})
     })
     .catch(err=>{
       res.send(err)
@@ -63,7 +64,7 @@ router.get('/approval/rej/:userid/:equipid', (req, res)=>{
 router.get('/period', (req, res)=>{
   getTheFuckingData()
     .then(users=>{
-      res.render('period', {title:'Period loan data', data_users:users})
+      res.render('period', {title:'Period loan data', data_users:users, page:'LIST RENTAL'})
     })
     .catch(err=>{
       res.send(err)
@@ -85,7 +86,7 @@ router.get('/period/return/:userid/:equipid', (req, res)=>{
 router.get('/returned', (req, res)=>{
   getTheFuckingData()
     .then(users=>{
-      res.render('returned', {title:'Returned loan data', data_users:users})
+      res.render('returned', {title:'Returned loan data', data_users:users, page:'RENTAL RETURNED'})
     })
     .catch(err=>{
       res.send(err)
