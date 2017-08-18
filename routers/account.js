@@ -48,7 +48,7 @@ router.get('/add', (req, res)=>{
 router.post('/add', (req, res)=>{
   models.User.create(req.body)
   .then(()=>{
-    res.render('newAccount', {msg: 'Succesfull create account'})
+    res.render('newAccount', {msg: 'Succesfull create account', page:'ADD ROLE FORM', title: 'Add New Role'})
   })
   .catch(err=>{
     res.send(err)

@@ -34,7 +34,7 @@
               <td><%= da.phone %></td>
               <td><%= da.address %></td>
               <td><a href="/account/admin/edit/<%= da.id %>"><%- include layout/edit%>edit</a></td>
-              <td><a href="/account/admin/<%= da.id %>"><%- include layout/delete%></a></td>
+              <td><a href="/account/admin/delete/<%= da.id %>"><%- include layout/delete%></a></td>
             </tr>
             <%})%>
           </tbody>
