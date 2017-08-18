@@ -32,3 +32,5 @@ function deleteData(req){
     })
   })
 }
+
+module.exports = {editData, deleteData}
