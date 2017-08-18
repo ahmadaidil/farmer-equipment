@@ -31,7 +31,7 @@ function getTheFvckingData(req){
 router.get('/', (req, res)=>{
   getTheFvckingData(req)
     .then(user=>{
-      res.render('dashboard', {u: user, page: 'DASHBOARD'})
+      res.render('dashboard', {u: user, page: 'DASHBOARD',user:req.session.user})
     })
     .catch(err=>{
       res.send(err)

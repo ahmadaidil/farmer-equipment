@@ -5,7 +5,7 @@ const models = require('../models')
 const saltPass = require('../helpers/saltpass')
 
 router.get('/login', (req, res)=>{
-  res.render('login', {msg: '', page: "LOGIN FORM"})
+  res.render('login', {msg: '', page:'FARM EQUIPMENT RENTAL'})
 })
 
 router.post('/login', (req, res, next)=>{
@@ -30,11 +30,11 @@ router.post('/login', (req, res, next)=>{
         return res.redirect('/dashboard')
       }
     } else{
-      res.render('login', {msg: 'wrong password'})
+      res.render('login', {msg: 'wrong password', page:'FARM EQUIPMENT RENTAL'})
     }
   })
   .catch(err=>{
-    res.render('login', {msg: 'username doesnt exist'});
+    res.render('login', {msg: 'username doesnt exist', page:'FARM EQUIPMENT RENTAL'});
   })
 })
 

@@ -1,6 +1,8 @@
 var express = require('express')
 var router = express.Router()
 
+var models = require('../models')
+
 router.use((req,res, next)=>{
   if(req.session.authority == 'admin' || req.session.authority == 'user'){
      next();
@@ -10,7 +12,13 @@ router.use((req,res, next)=>{
 })
 
 router.get('/', (req, res)=>{
-  res.render('home', {page: "HOME"})
+  // models.User.findOne({
+  //   where:{role: 'admin'}
+  // })
+  // .then((user)=>{
+  //   res.render('home', {page: "HOME", user:user})
+  // })
+  res.render('home', {page: "HOME", user:req.session.admin})
 })
 
 module.exports = router
