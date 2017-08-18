@@ -53,7 +53,7 @@ router.post('/signup', (req, res)=>{
     email: req.body.email,
     username: req.body.username,
     password: req.body.password,
-    role: "admin",
+    role: "user",
     phone: req.body.phone,
     address: req.body.address
   })
