@@ -2,7 +2,7 @@ var express = require('express')
 var router = express.Router()
 
 var models =  require('../models')
-var data = require('../helpers/dataAccount')
+//var data = require('../helpers/dataAccount')
 
 router.use((req,res, next)=>{
   if(req.session.authority == 'admin'){
@@ -11,6 +11,41 @@ router.use((req,res, next)=>{
     res.send(`Sorry, user can't access this page`);
   }
 })
+
+function editData(req){
+  return new Promise((resolve, reject)=>{
+    models.User.update({
+      name: req.body.name,
+      email: req.body.email,
+      telp: req.body.phone,
+      address: req.body.address
+    },{
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(()=>{
+      resolve()
+    })
+    .catch(err=>{
+      reject(err)
+    })
+  })
+}
+
+function deleteData(req){
+  return new Promise((resolve, reject)=>{
+    models.User.destroy({
+      where:{id: req.params.id}
+    })
+    .then(()=>{
+      resolve()
+    })
+    .catch(err=>{
+      res.send(err)
+    })
+  })
+}
 
 router.get('/', (req, res)=>{
   res.redirect('/home')
@@ -76,7 +111,7 @@ router.get('/admin/edit/:id', (req, res)=>{
 })
 
 router.post('/admin/edit/:id', (req, res)=>{
-  data.editData(req).then(()=>{
+  editData(req).then(()=>{
     res.redirect('/account/admin')
   }).catch(err=>{
     res.send(err)
@@ -84,7 +119,7 @@ router.post('/admin/edit/:id', (req, res)=>{
 })
 
 router.post('/user/edit/:id', (req, res)=>{
-  data.editData(req).then(()=>{
+  editData(req).then(()=>{
     res.redirect('/account/user')
   }).catch(err=>{
     res.send(err)
@@ -92,13 +127,13 @@ router.post('/user/edit/:id', (req, res)=>{
 })
 
 router.get('/admin/delete/:id', (req, res)=>{
-  data.deleteData(req).then(()=>{
+  deleteData(req).then(()=>{
     res.redirect('/account/admin')
   })
 })
 
 router.get('/user/delete/:id', (req, res)=>{
-  data.deleteData(req).then(()=>{
+  deleteData(req).then(()=>{
     res.redirect('/account/user')
   })
 })
