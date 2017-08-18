@@ -34,6 +34,4 @@ app.use('/equipment', equipment)
 app.use('/dashboard', dashboard)
 
 
-app.listen(3000,()=>{
-  console.log("Hai, Im F*cking Listener");
-})
+app.listen(process.env.PORT || 3000)

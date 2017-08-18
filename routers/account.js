@@ -4,13 +4,13 @@ var router = express.Router()
 var models =  require('../models')
 var data = require('../helpers/dataAccount')
 
-// router.use((req,res, next)=>{
-//   if(req.session.authority == 'admin'){
-//      next();
-//   } else {
-//     res.send(`Sorry, user can't access this page`);
-//   }
-// })
+router.use((req,res, next)=>{
+  if(req.session.authority == 'admin'){
+     next();
+  } else {
+    res.send(`Sorry, user can't access this page`);
+  }
+})
 
 router.get('/', (req, res)=>{
   res.redirect('/home')

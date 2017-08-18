@@ -2,13 +2,13 @@ var express = require('express')
 var router = express.Router()
 const models = require('../models')
 
-// router.use((req,res, next)=>{
-//   if(req.session.authority == 'admin'){
-//      next();
-//   } else {
-//     res.send(`Sorry, user can't access this page`);
-//   }
-// })
+router.use((req,res, next)=>{
+  if(req.session.authority == 'admin'){
+     next();
+  } else {
+    res.send(`Sorry, user can't access this page`);
+  }
+})
 
 router.get('/', (req, res)=>{
   models.Equipment.findAll()
