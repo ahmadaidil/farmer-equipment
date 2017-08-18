@@ -1,63 +1,76 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>INDEX</title>
+      <%- include layout/header %>
   </head>
   <body>
-    <ul>
-      <ul><a href="/dashboard">Dashboard</a></ul>
-      <ul><a href="#"></a></ul>
-      <li><a href="/logout">Logout</a></li>
-    </ul>
-    <a href="/dashboard/newLoan">New Loan</a><br><br>
-    <% if(u.Equipment) { %>
-      <table border="1">
-        <thead>
-          <th>No.</th>
-          <th>Equipment Type</th>
-          <th>Equipment Brand</th>
-          <th>Qty</th>
-          <th>Start from</th>
-          <th>Return to</th>
-          <th>Info</th>
-          <th>Status</th>
-        </thead>
-        <% u.Equipment.forEach((e,i)=>{ %>
-        <tbody>
-          <td><%= i+1 %></td>
-          <td><%= e.name_attr %></td>
-          <td><%= e.spec %></td>
-          <td><%= e.UserEquipment.Qty %></td>
-          <td><%= e.UserEquipment.TglPeminjaman.toLocaleDateString() %></td>
-          <td><%= e.UserEquipment.TglPengembalian.toLocaleDateString() %></td>
-          <td>
-            <%if(e.UserEquipment.Approved && !e.UserEquipment.Returned){%>
-              <%if(new Date().setHours(0,0,0,0) < e.UserEquipment.TglPengembalian.setHours(0,0,0,0)){%>
-                On Period (H<%=new Date().getDate() - e.UserEquipment.TglPengembalian.getDate()%>)
-              <% } else if(new Date().setHours(0,0,0,0) == e.UserEquipment.TglPengembalian.setHours(0,0,0,0)){ %>
-                Return today
-              <%}else if(new Date().setHours(0,0,0,0) > e.UserEquipment.TglPengembalian.setHours(0,0,0,0)){ %>
-                Out of Period
-              <%}%>
-            <% } else { %>
-              -
-            <% } %>
-          </td>
-          <td>
-            <% if(!e.UserEquipment.Approved && !e.UserEquipment.Returned){%>
-              Waiting for approval
-            <% } else if(e.UserEquipment.Approved && !e.UserEquipment.Returned) {%>
-              Approved
-            <% } else {%>
-              Returned
-            <% } %>
-          </td>
-        </tbody>
-        <% }) %>
-      </table>
-    <% }else{ %>
-      You dont have any loan, try one...
-    <% } %>
+    <section class="home-head">
+      <div class="col-xs-12 col-md-12 menu-header">
+        <ul class="menu">
+          <li><a href="/dashboard">Dashboard</a></li>
+          <li><a href="#"></a></li>
+          <li><a href="/logout">Logout</a></li>
+        </ul>
+      </div>
+
+
+      <div class="formtag dash">
+      <h4>HELLO</h4>
+      <a href="/dashboard/newLoan" class="btn btn-warning">New Loan</a>
+      <br><br>
+      <% if(u.Equipment) { %>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Equipment Type</th>
+              <th>Equipment Brand</th>
+              <th>Qty</th>
+              <th>Start from</th>
+              <th>Return to</th>
+              <th>Info</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <% u.Equipment.forEach((e,i)=>{ %>
+          <tbody>
+            <tr>
+              <td><%= i+1 %></td>
+              <td><%= e.name_attr %></td>
+              <td><%= e.spec %></td>
+              <td><%= e.UserEquipment.Qty %></td>
+              <td><%= e.UserEquipment.TglPeminjaman.toLocaleDateString() %></td>
+              <td><%= e.UserEquipment.TglPengembalian.toLocaleDateString() %></td>
+              <td>
+                <%if(e.UserEquipment.Approved && !e.UserEquipment.Returned){%>
+                  <%if(new Date().setHours(0,0,0,0) < e.UserEquipment.TglPengembalian.setHours(0,0,0,0)){%>
+                    On Period (H<%=new Date().getDate() - e.UserEquipment.TglPengembalian.getDate()%>)
+                  <% } else if(new Date().setHours(0,0,0,0) == e.UserEquipment.TglPengembalian.setHours(0,0,0,0)){ %>
+                    Return today
+                  <%}else if(new Date().setHours(0,0,0,0) > e.UserEquipment.TglPengembalian.setHours(0,0,0,0)){ %>
+                    Out of Period
+                  <%}%>
+                <% } else { %>
+                  -
+                <% } %>
+              </td>
+              <td>
+                <% if(!e.UserEquipment.Approved && !e.UserEquipment.Returned){%>
+                  Waiting for approval
+                <% } else if(e.UserEquipment.Approved && !e.UserEquipment.Returned) {%>
+                  Approved
+                <% } else {%>
+                  Returned
+                <% } %>
+              </td>
+            </tr>
+          </tbody>
+          <% }) %>
+        </table>
+      <% }else{ %>
+        You dont have any loan, try one...
+      <% } %>
+      </div>
+   </section>
   </body>
 </html>

@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title><%=title%></title>
+    <%- include layout/header%>
   </head>
   <body>
-    <form class="" action="/equipment/add" method="post">
-      <input type="text" name="name_attr" value="" placeholder="Equipment Type">
-      <input type="text" name="spec" value="" placeholder="Equipment Brand">
-      <input type="submit" name="" value="Submit">
-    </form>
+    <section>
+      <h3><%= title %></h3>
+      <a onclick="goBack()" class="btn btn-warning"> < Go Back </a>
+      <form class="" action="/equipment/add" method="post">
+        <input type="text" name="name_attr" value="" placeholder="Equipment Type">
+        <input type="text" name="spec" value="" placeholder="Equipment Brand">
+        <input type="submit" name="" value="Submit">
+      </form>
+    </section>
+
+    <script>
+      function goBack() {
+          window.history.back();
+      }
+    </script>
   </body>
 </html>

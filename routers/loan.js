@@ -31,7 +31,7 @@ function getTheFuckingData(){
 router.get('/approval', (req, res)=>{
   getTheFuckingData()
     .then(users=>{
-      res.render('approving', {title:'Loan data that need to be approved', data_users:users})
+      res.render('approval', {title:'Loan data that need to be approved', data_users:users})
     })
     .catch(err=>{
       res.send(err)

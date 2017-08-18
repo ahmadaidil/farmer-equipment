@@ -1,0 +1,148 @@
+
+@import url('https://fonts.googleapis.com/css?family=Grand+Hotel|PT+Sans');
+
+body{
+  font-family: 'PT Sans', sans-serif;
+  font-size: 18px;
+  margin:0;
+  padding: 0;
+}
+.home-head{
+  background: url('header.jpg');
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  color: #fff;
+}
+.formtag{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.formtag-wrap{
+  background-color: rgba(0,0,0,0.4);
+  padding: 10px 10% 20px 10%;
+  border-radius: 5px;
+  width: 350px;
+  color: #101426;
+}
+.formtag-wrap button{
+  width: 100%;
+  border:0px;
+  color: #fff;
+
+  background: linear-gradient(45deg, rgba(252,151,59,0.65) 45%, rgba(4,6,1,0.65) 100%);
+	border-radius: 2px;
+	box-shadow: 0px 2px 4px rgba(34,62,66,.25);
+  font: 12px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-transform: uppercase;
+  -webkit-transition: box-shadow 1s ease;
+	transition: box-shadow 1s ease;
+}
+.formtag-wrap .small-ref a{
+  color: #fff;
+  text-shadow: 0 0 2px #000; /* horizontal-offset vertical-offset 'blur' colour */
+  -moz-text-shadow: 0 0 2px #000;
+  -webkit-text-shadow: 0 0 2px #000;
+}
+.formtag h3{
+  text-align: center;
+  font-family: 'Grand Hotel', cursive;
+  padding-bottom: 25px;
+  font-size: 55px;
+  color: #f94;
+  text-shadow: 0 0 2px #000; /* horizontal-offset vertical-offset 'blur' colour */
+  -moz-text-shadow: 0 0 2px #000;
+  -webkit-text-shadow: 0 0 2px #000;
+}
+.formtag input{
+  width: 100%;
+  margin-bottom: 7px;
+}
+
+/*Home admin*/
+.menu{
+  display: flex;
+  justify-content: space-around;
+  margin: 8px 8%;
+  padding-left: 0;
+}
+.menu li{
+  list-style: none;
+}
+.menu li a{
+  color: #fc9;
+  text-decoration: none;
+  cursor: pointer;
+}
+.menu li a:hover{
+  color: #fc9;
+}
+.menu-header{
+  background-color: rgba(0,0,0,0.8);
+}
+.formtag h1{
+  font-size: 65px;
+  color: #000;
+}
+.formtag .namerole{
+  font-size: 48px;
+  color: #000;
+  font-family: 'PT Sans', sans-serif;
+}
+.formtag .button-menu{
+  color: #fff;
+  padding: 12px 18px;
+
+  background: linear-gradient(45deg, rgba(252,151,59,0.65) 45%, rgba(4,6,1,0.65) 100%);
+	border-radius: 2px;
+	box-shadow: 0px 2px 4px rgba(34,62,66,.25);
+  font: 12px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-transform: uppercase;
+  -webkit-transition: box-shadow 1s ease;
+	transition: box-shadow 1s ease;
+}
+.formtag .button-menu:hover {
+	box-shadow: 0px 4px 4px rgba(34,62,66,.5);
+	-webkit-transition: box-shadow 1s ease;
+	transition: box-shadow 1s ease;
+}
+
+/*equipment page*/
+.containt{
+  text-align: center;
+  padding-top: 5%;
+}
+.containt .table-width{
+  width: 60%;
+  margin: 0 auto;
+  text-align: left;
+}
+.table-width td a{
+  text-decoration: none;
+}
+.table-width td a:hover{
+  color: #fc9;
+}
+.containt form{
+  margin-top: 25px;
+}
+.containt p{
+  margin-bottom: 0;
+}
+.containt input{
+  margin-bottom: 10px;
+}
+
+/*dahsboard*/
+.dash{
+  background-color:rgba(0,0,0,0.6);
+  /*top: 25%;*/
+  padding: 10px;
+}

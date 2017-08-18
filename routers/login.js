@@ -5,7 +5,7 @@ const models = require('../models')
 const saltPass = require('../helpers/saltpass')
 
 router.get('/login', (req, res)=>{
-  res.render('login', {msg: ''})
+  res.render('login', {msg: '', page: "LOGIN FORM"})
 })
 
 router.post('/login', (req, res, next)=>{
@@ -44,7 +44,7 @@ router.get('/logout', (req, res, next)=>{
 })
 
 router.get('/signup', (req, res)=>{
-  res.render('signup')
+  res.render('signup', {page: "SIGNUP FORM"})
 })
 
 router.post('/signup', (req, res)=>{

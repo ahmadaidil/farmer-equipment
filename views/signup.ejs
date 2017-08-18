@@ -1,26 +1,34 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>SIGNUP FORM</title>
+    <%- include layout/header %>
   </head>
   <body>
-    <form class="" action="/signup" method="post">
-      <p>Full Name</p>
-      <input type="text" name="name"/>
-      <p>Username</p>
-      <input type="text" name="username"/>
-      <p>Password</p>
-      <input type="password" name="password"/>
-      <p>Email</p>
-      <input type="email" name="email"/>
-      <p>Phone</p>
-      <input type="telp" name="phone"/>
-      <p>Address</p>
-      <input type="text" name="address"/>
-      <br>
-      <br>
-      <button type="submit" name="button">SIGN UP</button>
-    </form>
+
+    <section class="home-head">
+    <div class="formtag">
+      <div class="formtag-wrap">
+        <h3>Sign Up Form</b></h3>
+        <form action="/signup" method="POST">
+          <label><b>Full Name</b></label>
+          <input type="text" name="name"/>
+          <label><b>Username</b></label>
+          <input type="text" name="username"/>
+          <label><b>Password</b>
+          <input type="password" name="password"/>
+          <label><b>Email</b></label>
+          <input type="email" name="email"/>
+          <label><b>Phone</b></label>
+          <input type="telp" name="phone"/>
+          <label><b>Address</b></label>
+          <input type="text" name="address"/>
+          <br>
+          <br>
+          <button type="submit" name="button" class="btn btn-default">SIGN UP</button>
+          <p class="small-ref" style="color:white">Already have account? <a href="/login">Login here</a></p>
+        </form>
+      </div>
+    </div>
+  </section>
   </body>
 </html>
