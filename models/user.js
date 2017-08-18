@@ -3,65 +3,13 @@ var salt = require('../helpers/saltpass')
 
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define('User', {
-    name: {
-      type: DataTypes.STRING,
-      validate:{
-        notNull:{
-          msg: 'nama tidak boleh kosong'
-        }
-      }
-    },
-    role: {
-      type: DataTypes.STRING,
-      validate:{
-        notNull:{
-          msg: 'role tidak boleh kosong'
-        }
-      }
-    },
-    email: {
-      type:DataTypes.STRING,
-      allowNull:false,
-      validate:{
-        isEmail: {
-          msg: 'Bukan format email'
-        },
-        notNull: {
-          msg: 'Email tidak boleh kosong'
-        },
-        isUnique:{
-          msg: 'Email sudah digunakan sebelumnya'
-        }
-      }
-    },
-    phone: {
-      type:DataTypes.STRING,
-      validate:{
-        notNull:{
-          msg: 'No henpon ga boleh kosong'
-        },
-        isNumeric:{
-          msg: 'Input no henpon yang bener bro'
-        }
-      }
-    },
+    name: DataTypes.STRING,
+    role: DataTypes.STRING,
+    email: DataTypes.STRING,
+    phone: DataTypes.STRING,
     address: DataTypes.STRING,
-    username: {
-      type:DataTypes.STRING,
-      validate:{
-        notNull:{
-          msg: 'username tidak boleh kosong'
-        }
-      }
-    },
-    password: {
-      type: DataTypes.STRING,
-      validate:{
-        notNull:{
-          msg: 'password tidak boleh kosong'
-        }
-      }
-    },
+    username: DataTypes.STRING,
+    password: DataTypes.STRING,
     salt: DataTypes.STRING
   },{
     hooks:{
