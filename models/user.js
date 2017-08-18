@@ -26,7 +26,7 @@ module.exports = function(sequelize, DataTypes) {
         isEmail: {
           msg: 'Bukan format email'
         },
-        notEmpty: {
+        notNull: {
           msg: 'Email tidak boleh kosong'
         },
         isUnique:{
